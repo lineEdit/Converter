@@ -9,25 +9,7 @@ public class Main {
         String sourceNumber = scanner.next();
         int targetRadix = scanner.nextInt();
 
-        int targetNumder;
-        if (sourceRadix == 1) {
-            targetNumder = sourceNumber.length();
-        } else {
-            targetNumder = Integer.parseInt(sourceNumber, sourceRadix);
-        }
-
-        String result;
-        if (targetRadix == 1) {
-            StringBuilder stringBuilder = new StringBuilder();
-            int size = Integer.parseInt(sourceNumber);
-            while (size > 0) {
-                stringBuilder.append("1");
-                --size;
-            }
-            result = stringBuilder.toString();
-        } else {
-            result = Integer.toString(targetNumder, targetRadix);
-        }
-        System.out.println(result);
+        Converter converter = new Converter(sourceRadix, sourceNumber, targetRadix);
+        converter.calc();
     }
 }
