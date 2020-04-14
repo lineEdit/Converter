@@ -43,9 +43,17 @@ public class Converter {
     private String anyIntegerToTarget() {
         if (sourceRadix == 1) {
             return Integer.toString(sourceNumber.length(), targetRadix);
-        } else {
-            return Integer.toString(Integer.parseInt(sourceNumber, sourceRadix), targetRadix);
         }
+        if (targetRadix == 1) {
+            StringBuilder stringBuilder = new StringBuilder();
+            int size = Integer.parseInt(sourceNumber);
+            while (size > 0) {
+                stringBuilder.append("1");
+                --size;
+            }
+            return stringBuilder.toString();
+        }
+        return Integer.toString(Integer.parseInt(sourceNumber, sourceRadix), targetRadix);
     }
 
     private int charToInt(char symbol) {
