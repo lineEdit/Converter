@@ -42,7 +42,7 @@ public class Converter {
 
     private String anyIntegerToTarget() {
         if (sourceRadix == 1) {
-            return Integer.toString(sourceNumber.length());
+            return Integer.toString(sourceNumber.length(), targetRadix);
         } else {
             return Integer.toString(Integer.parseInt(sourceNumber, sourceRadix), targetRadix);
         }
